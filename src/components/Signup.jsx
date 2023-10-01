@@ -4,6 +4,8 @@ import { UserAuth } from "../context/AuthContext";
 import signupImg from "../assets/images/signup.gif";
 import { getAuth, sendEmailVerification } from "firebase/auth"; // Import from the modular version
 import app from "../firebase";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -30,10 +32,9 @@ const Signup = () => {
                 console.log("Email Sent");
                 auth.onAuthStateChanged((authUser) => {
                     if (authUser && authUser.emailVerified) {
-                      console.log("email is verified");
+                      toast.success("email is verified");
                       navigate("/account");
                     } else {
-                      console.log("email not verified");
                       navigate("/login");
                     }
                   });
@@ -42,7 +43,7 @@ const Signup = () => {
             
         } catch (e) {
             setError(e.message);
-            console.log(e.message);
+            toast.success(e.message);
         }
     }
 

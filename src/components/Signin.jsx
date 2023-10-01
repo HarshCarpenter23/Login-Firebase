@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { getAuth} from "firebase/auth";
-
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signin = () => {
     const [email, setEmail] = useState('');
@@ -40,7 +40,7 @@ const Signin = () => {
                   console.log("email is verified");
                   navigate("/account");
                 } else {
-                  console.log("email not verified");
+                  toast.success("Please verify your email.");
                   navigate("/login");
                 }
               });
@@ -49,7 +49,7 @@ const Signin = () => {
                         
         } catch (e) {
             setError(e.message)
-            alert(e.message)
+            toast.success(e.message)
         }
     }
 
