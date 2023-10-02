@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import signupImg from "../assets/images/signup.gif";
-import { getAuth, sendEmailVerification } from "firebase/auth"; // Import from the modular version
-import app from "../firebase";
+import { getAuth, sendEmailVerification } from "firebase/auth"; 
+
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -17,8 +15,7 @@ const Signup = () => {
 
     const { createUser } = UserAuth();
     const navigate = useNavigate();
-    const {user} = UserAuth();
-    const auth = getAuth(app);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,7 +40,8 @@ const Signup = () => {
             
         } catch (e) {
             setError(e.message);
-            toast.success(e.message);
+            toast.error(e.message);
+
         }
     }
 
