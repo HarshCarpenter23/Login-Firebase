@@ -88,6 +88,10 @@ const Signin = () => {
             }
         }
 
+        const handleReset = () => {
+            navigate('/reset');
+        }
+
 
     return (
         <section className="px-5 lg:px-0 mt-[40px]">
@@ -107,7 +111,9 @@ const Signin = () => {
                     </div>
                     <button className="border rounded-md border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 my-2 text-white">Sign In</button>
                     
-                    <p className="py-2 flex justify-center">First time user? <Link to='/signup' className="underline text-blue-500">Sign up.</Link> </p> 
+                    <p className="py-2 flex text-xs justify-center">First time user? <Link to='/signup' className="underline text-blue-500">&nbsp;Sign up</Link> </p> 
+                    <p onClick={ handleReset } className="flex justify-center underline text-blue-500 text-xs hover:cursor-pointer">Forgot Password?</p>
+                    <br />
                 </form>
 
                 <div className="flex justify-center"><button className="text-white bg-green-500 rounded-xl p-2 text-xs" onClick={resendVerificationEmail}>Resend Verification Email</button></div>

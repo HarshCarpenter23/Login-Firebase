@@ -3,6 +3,7 @@ import "./App.css";
 import Login from './components/Signin';
 import Signup from './components/Signup';
 import Account from './components/Account';
+import ForgotPassword from "./components/ForgotPassword";
 import { Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -22,6 +23,7 @@ function App() {
       <Route path='/account' element={<ProtectedRoute>
         <Account />
         </ProtectedRoute>} />
+      <Route path="/reset" element={<ForgotPassword />}/>
     </Routes>
     </AuthContextProvider>
    </div>
